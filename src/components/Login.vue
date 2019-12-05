@@ -9,7 +9,7 @@
 <script>
 import navigation from '@/components/NavBar.vue'
 import firebase from 'firebase'
-import * as firebaseui from "firebaseui";
+import * as firebaseui from 'firebaseui'
 import 'firebaseui/dist/firebaseui.css'
 
 export default {
@@ -21,14 +21,17 @@ export default {
         navigation
     },
     mounted() {
-        let ui = firebaseui.auth.AuthUI.getInstance();
+        let ui = firebaseui.auth.AuthUI.getInstance()
         if (!ui) {
-            ui = new firebaseui.auth.AuthUI(firebase.auth());
+            ui = new firebaseui.auth.AuthUI(firebase.auth())
         }
         let uiConfig = {
             signInSuccessUrl: '/profile',
-            signInOptions: [firebase.auth.FacebookAuthProvider.PROVIDER_ID]
-        };
+            signInOptions: [
+                firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+                firebase.auth.GoogleAuthProvider.PROVIDER_ID
+            ]
+        }
         ui.start('#firebaseui-auth-container', uiConfig)
     }
 }

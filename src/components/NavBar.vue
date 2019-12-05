@@ -29,17 +29,23 @@
                 <router-link class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" to="/"
                     >Home</router-link
                 >
-                <router-link class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" to="/login"
+                <router-link
+                    v-show="!user"
+                    class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+                    to="/login"
                     >Login</router-link
                 >
                 <router-link
+                    v-show="user"
                     class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
                     to="/profile"
                     >Profile</router-link
                 ><a
+                    v-show="user"
                     class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
                     @click="signoutButtonPressed"
-                    >Logout</a>
+                    >Logout</a
+                >
             </div>
         </div>
     </nav>
@@ -49,7 +55,14 @@
 import firebase from 'firebase'
 export default {
     data() {
-        return {}
+        return {
+            user: null
+        }
+    },
+    created() {
+        firebase.auth().onAuthStateChanged(user => {
+            this.user = user
+        })
     },
     methods: {
         signoutButtonPressed(e) {
@@ -58,7 +71,7 @@ export default {
             this.$router.push({
                 name: 'Login'
             })
-        },
+        }
     }
 }
 </script>
