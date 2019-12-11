@@ -93,7 +93,7 @@
               <legend class="uppercase tracking-wide text-sm">Add Steps</legend>
             </div>
             <div class="md:flex-1 mt-2 mb:mt-0 md:px-3">
-              <textarea class="w-full shadow-inner p-4 border-0" placeholder="Add each step" rows="3" v-model="step"/>
+              <textarea class="w-full shadow-inner p-4 border-0" placeholder="Add each step" rows="3" v-model="step" />
             </div>
           </div>
           <div class="md:flex mb-6 ">
@@ -158,8 +158,8 @@ export default {
       step: null,
       ingredients: [],
       ingredient: {},
-      imageURL: 'https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg',
-      name: 'Recipe Name',
+      imageURL: '',
+      name: '',
     };
   },
   methods: {
