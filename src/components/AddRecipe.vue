@@ -18,29 +18,32 @@
                   <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Name</label>
                   {{ name }}
                 </div>
+                <div class="md:flex-1 md:pr-3">
+                  <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Description</label>
+                  {{ description }}
+                </div>
                 <div class="md:flex-1 md:pl-3">
                   <img :src="imageURL" :alt="imageURL">
                 </div>
               </div>
 
               <div class="md:flex mb-4">
-                <div class="md:flex-1 md:pr-3">
+                <div class="md:flex-1 md:pr-3 flex-col">
                   <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Steps</label>
-                  <span v-for="(step, index) in Steps" :key="index">
-                    {{ step }}
+                  <span v-for="(step, index) in Steps" :key="index" class="flex flex-col">
+                    ⁃ {{ step }}
                   </span>
-                  {{ step }}
                 </div>
-                <div class="md:flex-1 md:pl-3">
+
+                <div class="md:flex-1 md:pl-3 flex-col">
                   <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Ingredients</label>
-                  <span v-for="(ingredient, index) in ingredients" :key="index">
-                    {{ ingredient.name }} | {{ ingredient.quantity }}
+                  <span v-for="(ingredient, index) in ingredients" :key="index" class="flex flex-col">
+                    ⁃ {{ ingredient.name }} | {{ ingredient.quantity }}
                   </span>
                 </div>
               </div>
             </div>
           </div>
-
 
           <div class="md:flex mb-8">
             <div class="md:w-1/3">
@@ -50,6 +53,10 @@
               <div class="mb-4">
                 <label class="block uppercase tracking-wide text-xs font-bold">Name</label>
                 <input class="w-full shadow-inner p-4 border-0" type="text" name="name" v-model="name" placeholder="Pizza">
+              </div>
+              <div class="mb-4">
+                <label class="block uppercase tracking-wide text-xs font-bold">Description</label>
+                <input class="w-full shadow-inner p-4 border-0" type="text" name="description" v-model="description" placeholder="Description">
               </div>
               <div class="mb-4">
                 <label class="block uppercase tracking-wide text-charcoal-darker text-xs font-bold">Image URL</label>
@@ -160,6 +167,7 @@ export default {
       ingredient: {},
       imageURL: '',
       name: '',
+      description: '',
     };
   },
   methods: {
@@ -182,6 +190,7 @@ export default {
           ingredients: this.ingredients,
           imageURL: this.imageURL,
           name: this.name,
+          description: this.description,
         });
     },
   },

@@ -1,13 +1,11 @@
 <template>
   <section>
-    <navigation/>
     <h5 class="center-align">Login</h5>
     <section id="firebaseui-auth-container"/>
   </section>
 </template>
 
 <script>
-import navigation from '@/components/NavBar.vue';
 import firebase from 'firebase';
 import * as firebaseui from 'firebaseui';
 import 'firebaseui/dist/firebaseui.css';
@@ -17,16 +15,13 @@ export default {
   data() {
     return {};
   },
-  components: {
-    navigation,
-  },
   mounted() {
     let ui = firebaseui.auth.AuthUI.getInstance();
     if (!ui) {
       ui = new firebaseui.auth.AuthUI(firebase.auth());
     }
     let uiConfig = {
-      signInSuccessUrl: '/profile',
+      signInSuccessUrl: '/',
       signInOptions: [
         firebase.auth.FacebookAuthProvider.PROVIDER_ID,
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,

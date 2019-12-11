@@ -44,12 +44,12 @@
           to="/add-recipe"
         >Add Recipe</router-link></button>
       </div>
+      <a
+        v-show="user"
+        class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+        @click="signoutButtonPressed"
+      >Logout</a>
     </div>
-    <a
-      v-show="user"
-      class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
-      @click="signoutButtonPressed"
-    >Logout</a>
 
   </nav>
 </template>
