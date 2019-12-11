@@ -1,6 +1,6 @@
 <template>
   <section>
-    <navigation/>
+    <navigation />
     <div v-if="!user">
       <login />
     </div>
@@ -102,5 +102,3 @@ export default {
   },
 };
 </script>
-
-<style></style>

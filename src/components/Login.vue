@@ -1,8 +1,10 @@
 <template>
-  <section>
-    <h5 class="center-align">Login</h5>
-    <section id="firebaseui-auth-container"/>
-  </section>
+  <div>
+    <div class="h-screen w-screen flex flex-col items-center justify-center" id="firebaseui-auth-container">
+      <h1 class="text-6xl">Recipe Book</h1>
+      <img class="h-64 mt-5 mb-5" src="../assets/undraw_noted_pc9f.svg" alt="splash image">
+    </div>
+  </div>
 </template>
 
 <script>
