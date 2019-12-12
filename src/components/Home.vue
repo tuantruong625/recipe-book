@@ -30,8 +30,11 @@
                 <a class="flex items-center no-underline hover:underline text-black" href="#">
                   <img alt="Placeholder" class="block rounded-full h-8" :src="user.photoURL">
                   <p class="ml-2 text-sm">
-                    {{ user.displayName }}
+                    {{ user.displayName }} 
                   </p>
+                  <button  @click="deleteItem(recipe.id)" class="bg-transparent hover:bg-teal-500 text-teal-700 font-semibold hover:text-white py-2 px-4 border border-teal-500 hover:border-transparent rounded">
+                    Delete
+                  </button>
                 </a>
               </footer>
             </div>
@@ -83,6 +86,15 @@ export default {
     });
   },
   methods: {
+    deleteItem(key) {
+      firebase
+        .firestore()
+        .collection('users')
+        .doc(firebase.auth().currentUser.uid)
+        .collection('recipes')
+        .doc(key)
+        .delete();
+    },
     async getRecipes() {
       let recipesRef = await firebase
         .firestore()
