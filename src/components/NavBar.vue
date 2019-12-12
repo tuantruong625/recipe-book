@@ -27,23 +27,30 @@
     <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
       <div class="text-sm lg:flex-grow">
         <router-link class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" to="/">Home</router-link>
-        <router-link class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" to="/recipes">Recipes</router-link>
+        <!--        <router-link class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" to="/recipes">Recipes</router-link>-->
         <router-link
           v-show="!user"
           class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
           to="/login"
         >Login</router-link>
-        <router-link
+        <!--        <router-link-->
+        <!--          v-show="user"-->
+        <!--          class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"-->
+        <!--          to="/profile"-->
+        <!--        >Profile</router-link>-->
+        <button><router-link
           v-show="user"
           class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
-          to="/profile"
-        >Profile</router-link><a
-          v-show="user"
-          class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
-          @click="signoutButtonPressed"
-        >Logout</a>
+          to="/add-recipe"
+        >Add Recipe</router-link></button>
       </div>
+      <a
+        v-show="user"
+        class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+        @click="signoutButtonPressed"
+      >Logout</a>
     </div>
+
   </nav>
 </template>
 
