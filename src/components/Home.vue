@@ -25,7 +25,16 @@
               <div class="flex items-start justify-start flex-col md:p-3 p-3" v-for="(step, stepIndex) in recipe.Steps" :key="stepIndex">
                 <div class="list-disc"> ○ {{ step }}</div>
               </div>
-
+              <div class="flex items-start justify-start flex-col md:p-3 p-3">
+                <button  @click="deleteItem(recipe.id)" class="bg-transparent hover:bg-teal-500 text-teal-700 font-semibold hover:text-white py-2 px-4 border border-teal-500 hover:border-transparent rounded">
+                  Delete
+                </button>
+                <button class="bg-transparent hover:bg-teal-500 text-teal-700 font-semibold hover:text-white py-2 px-4 border border-teal-500 hover:border-transparent rounded">
+                  <router-link :to="{ name: 'Edit Recipe', params: {recipeList: recipe, key: recipe.id} }" >
+                    Edit
+                  </router-link>
+                </button>
+              </div>
               <footer class="flex items-center justify-between leading-none p-2 md:p-4">
                 <a class="flex items-center no-underline hover:underline text-black" href="#">
                   <img alt="Placeholder" class="block rounded-full h-8" :src="user.photoURL">
@@ -33,12 +42,6 @@
                     {{ user.displayName }} 
                   </p>
                 </a>
-                <button  @click="deleteItem(recipe.id)" class="bg-transparent hover:bg-teal-500 text-teal-700 font-semibold hover:text-white py-2 px-4 border border-teal-500 hover:border-transparent rounded">
-                  Delete
-                </button>
-                <router-link :to="{ name: 'Edit Recipe', params: {recipeList: recipe, key: recipe.id} }" class="btn btn-warning">
-                  Edit
-                </router-link>
               </footer>
             </div>
           </article>
