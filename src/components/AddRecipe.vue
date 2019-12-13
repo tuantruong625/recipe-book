@@ -119,45 +119,29 @@
           </div>
         </section>
       </main>
+
+      <modal v-if="showModal" @close="showModal = false">
+        <h3 slot="header">Recipe Added</h3>
+        <div slot="body">
+          <button><router-link
+            class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded"
+            to="/"
+          >View Recipes</router-link></button>
+        </div>
+      </modal>
     </section>
-
-
-
-    <!--    <label for="name">-->
-    <!--      Name-->
-    <!--      <input id="name" type="text" name="name" v-model="name" >-->
-    <!--    </label>-->
-    <!--    <label for="image">-->
-    <!--      Image URL-->
-    <!--      <input id="image" type="text" name="image" v-model="imageURL" >-->
-    <!--    </label>-->
-    <!--    <label for="steps">-->
-    <!--      Steps-->
-    <!--      {{ Steps }}-->
-    <!--      <input id="steps" type="text" name="steps" v-model="step" >-->
-    <!--      <button @click="addStep">Add step</button>-->
-    <!--    </label>-->
-    <!--    <label for="Ingredients">-->
-    <!--      Ingredients-->
-    <!--      {{ ingredients }}-->
-    <!--      <input id="Ingredients" type="text" name="ingredient name" v-model="ingredient.name" >-->
-    <!--      <input id="" type="text" name="ingredient quantity" v-model="ingredient.quantity" >-->
-    <!--      <button @click="addIngredient">Add Ingredient</button>-->
-    <!--    </label>-->
-
-    <!--    <button @click="addRecipe">Add Recipe</button>-->
   </section>
-
-
 </template>
 
 <script>
 import navigation from '@/components/NavBar.vue';
 import firebase from 'firebase';
+import Modal from '@/components/Modal.vue';
 
 export default {
   components: {
     navigation,
+    Modal,
   },
   data() {
     return {
@@ -168,6 +152,7 @@ export default {
       imageURL: '',
       name: '',
       description: '',
+      showModal: false,
     };
   },
   methods: {
@@ -192,6 +177,8 @@ export default {
           name: this.name,
           description: this.description,
         });
+
+      this.showModal = true;
     },
   },
 };
