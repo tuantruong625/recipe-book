@@ -31,10 +31,19 @@
                     Edit
                   </router-link>
                 </button>
-                <button  @click="deleteItem(recipe.id)" class="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded">
+                <button  id="show-modal" @click="showModal = true"  class="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded">
                   Delete
                 </button>
               </div>
+
+              <modal v-if="showModal" @close="showModal = false">
+                <h3 slot="header">Are you sure you want to delete?</h3>
+                <div slot="body">
+                  <button @click="deleteItem(recipe.id)" class="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-2 px-4 border border-red-500 hover:border-transparent rounded">
+                    Delete
+                  </button>
+                </div>
+              </modal>
               <footer class="flex items-center justify-between leading-none p-2 md:p-4">
                 <a class="flex items-center no-underline hover:underline text-black" href="#">
                   <img alt="Placeholder" class="block rounded-full h-8" :src="user.photoURL">
@@ -72,17 +81,20 @@
 import navigation from '@/components/NavBar.vue';
 import firebase from 'firebase';
 import Login from '@/components/Login.vue';
+import Modal from '@/components/Modal.vue';
 
 export default {
   components: {
     navigation,
     Login,
+    Modal,
   },
   data() {
     return {
       user: null,
       recipes: [],
       imagePlaceholder: 'https://cdn.dribbble.com/users/1012566/screenshots/4187820/topic-2.jpg',
+      showModal: false,
     };
   },
   created() {
@@ -100,6 +112,8 @@ export default {
         .collection('recipes')
         .doc(key)
         .delete();
+
+      this.showModal = false;
     },
     editRecipe(recipe){
       console.log(recipe);
