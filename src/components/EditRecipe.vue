@@ -122,6 +122,16 @@
         </section>
       </main>
     </section>
+
+    <modal v-if="showModal" @close="showModal = false">
+      <h3 slot="header">Recipe Updated!!</h3>
+      <div slot="body">
+        <button><router-link
+          class="bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white py-2 px-4 border border-green-500 hover:border-transparent rounded"
+          to="/"
+        >View Recipes</router-link></button>
+      </div>
+    </modal>
   </section>
 
 
@@ -130,10 +140,13 @@
 <script>
 import navigation from '@/components/NavBar.vue';
 import firebase from 'firebase';
+import Modal from '@/components/Modal.vue';
+
 
 export default {
   components: {
     navigation,
+    Modal,
   },
   data() {
     return {
@@ -145,6 +158,7 @@ export default {
       name: '',
       description: '',
       recipe: [],
+      showModal: false,
     };
   },
   created() {
@@ -186,6 +200,8 @@ export default {
           name: this.name,
           description: this.description,
         });
+
+      this.showModal = true;
     },
   },
 };
