@@ -43,8 +43,6 @@ export default {
           let recipe = doc.data();
           recipe.id = doc.id;
           this.recipes.push(recipe);
-          // eslint-disable-next-line no-console
-          console.log(recipe);
         });
       });
     },

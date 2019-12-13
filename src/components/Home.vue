@@ -115,10 +115,6 @@ export default {
 
       this.showModal = false;
     },
-    editRecipe(recipe){
-      console.log(recipe);
-      console.log(this.recipes);
-    },
     async getRecipes() {
       let recipesRef = await firebase
         .firestore()
