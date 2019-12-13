@@ -17,6 +17,14 @@ const routes = [
     meta: {
       auth: true,
     },
+  },  
+  {
+    path: '/edit-recipe',
+    name: 'Edit Recipe',
+    component: () => import(/* webpackChunkName: "about" */ '../components/EditRecipe.vue'),
+    meta: {
+      auth: true,
+    },
   },
   {
     path: '/recipes',

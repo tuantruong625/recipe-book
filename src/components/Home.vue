@@ -32,10 +32,13 @@
                   <p class="ml-2 text-sm">
                     {{ user.displayName }} 
                   </p>
-                  <button  @click="deleteItem(recipe.id)" class="bg-transparent hover:bg-teal-500 text-teal-700 font-semibold hover:text-white py-2 px-4 border border-teal-500 hover:border-transparent rounded">
-                    Delete
-                  </button>
                 </a>
+                <button  @click="deleteItem(recipe.id)" class="bg-transparent hover:bg-teal-500 text-teal-700 font-semibold hover:text-white py-2 px-4 border border-teal-500 hover:border-transparent rounded">
+                  Delete
+                </button>
+                <router-link :to="{ name: 'Edit Recipe', params: {recipeList: recipe, key: recipe.id} }" class="btn btn-warning">
+                  Edit
+                </router-link>
               </footer>
             </div>
           </article>
@@ -94,6 +97,10 @@ export default {
         .collection('recipes')
         .doc(key)
         .delete();
+    },
+    editRecipe(recipe){
+      console.log(recipe);
+      console.log(this.recipes);
     },
     async getRecipes() {
       let recipesRef = await firebase
